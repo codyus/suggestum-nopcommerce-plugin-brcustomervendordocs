@@ -1,0 +1,23 @@
+@using Nop.Plugin.Misc.BrCustomerVendorDocs.Models
+@model VendorCnpjModel
+@inject Nop.Services.Localization.ILocalizationService LocalizationService
+
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="label-wrapper">
+            <label class="col-form-label">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cnpj")</label>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="input-group input-group-short">
+            <input type="text" id="Cnpj" name="Cnpj" value="@Model.Cnpj" class="form-control" maxlength="18" placeholder="@(Model.AllowAlphaNumeric ? "00.000.000/0000-00 ou ABC12345678901" : "00.000.000/0000-00")" />
+            @if (Model.Required)
+            {
+                <span class="required">*</span>
+            }
+        </div>
+        <span class="form-text text-muted">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cnpj.Hint")</span>
+        <span class="field-validation-valid" data-valmsg-for="Cnpj" data-valmsg-replace="true"></span>
+    </div>
+</div>
+

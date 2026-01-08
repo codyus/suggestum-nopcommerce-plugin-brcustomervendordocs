@@ -1,0 +1,18 @@
+@using Nop.Plugin.Misc.BrCustomerVendorDocs.Models
+@model CustomerCpfModel
+@inject Nop.Services.Localization.ILocalizationService LocalizationService
+
+<div class="form-group row">
+    <div class="col-md-3">
+        <nop-label>@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cpf")</nop-label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" id="BrCustomerCpf" name="BrCustomerCpf" value="@Model.Cpf" class="form-control" maxlength="14" placeholder="000.000.000-00" />
+        @if (Model.Required)
+        {
+            <nop-required />
+        }
+        <span class="hint">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cpf.Hint")</span>
+    </div>
+</div>
+

@@ -1,0 +1,76 @@
+@model ConfigurationModel
+
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@await Component.InvokeAsync(typeof(Nop.Web.Areas.Admin.Components.AdminWidgetViewComponent), new { widgetZone = AdminWidgetZones.PluginDetailsBlock, additionalData = Model })
+
+<form asp-controller="BrCustomerVendorDocsAdmin" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="CpfRequired" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="CpfRequired" />
+                        <span asp-validation-for="CpfRequired"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="CnpjRequired" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="CnpjRequired" />
+                        <span asp-validation-for="CnpjRequired"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ShowCpfOnCheckout" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowCpfOnCheckout" />
+                        <span asp-validation-for="ShowCpfOnCheckout"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ShowCpfOnCustomerInfo" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowCpfOnCustomerInfo" />
+                        <span asp-validation-for="ShowCpfOnCustomerInfo"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ShowCnpjOnVendorEdit" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowCnpjOnVendorEdit" />
+                        <span asp-validation-for="ShowCnpjOnVendorEdit"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="AllowAlphaNumericCnpj" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AllowAlphaNumericCnpj" />
+                        <span asp-validation-for="AllowAlphaNumericCnpj"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

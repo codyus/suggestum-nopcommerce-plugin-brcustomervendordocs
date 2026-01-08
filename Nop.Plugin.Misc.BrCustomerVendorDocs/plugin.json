@@ -1,0 +1,12 @@
+{
+  "Group": "Misc",
+  "FriendlyName": "Brazilian Customer and Vendor Documents",
+  "SystemName": "Misc.BrCustomerVendorDocs",
+  "Version": "1.00.0",
+  "SupportedVersions": [ "4.90", "5.00" ],
+  "Author": "nopCommerce team",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.BrCustomerVendorDocs.dll",
+  "Description": "Adds CPF (Cadastro de Pessoa Física) and CNPJ (Cadastro Nacional de Pessoa Jurídica) fields with Brazilian document validation for customers and vendors. Includes validation algorithms, duplicate checking, and configurable display options for checkout and customer/vendor management pages."
+}
+

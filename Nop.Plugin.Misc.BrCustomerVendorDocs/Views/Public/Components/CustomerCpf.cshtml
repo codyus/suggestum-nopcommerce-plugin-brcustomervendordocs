@@ -1,0 +1,19 @@
+@model dynamic
+@inject Nop.Core.IWorkContext WorkContext
+@inject Nop.Services.Localization.ILocalizationService LocalizationService
+
+@{
+    var cpf = Model.Cpf as string ?? string.Empty;
+    var required = Model.Required as bool? ?? false;
+}
+
+<div class="inputs">
+    <label for="Cpf">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cpf"):</label>
+    <input type="text" id="Cpf" name="Cpf" value="@cpf" maxlength="14" placeholder="000.000.000-00" />
+    @if (required)
+    {
+        <nop-required />
+    }
+    <span class="field-validation-valid" data-valmsg-for="Cpf" data-valmsg-replace="true"></span>
+</div>
+

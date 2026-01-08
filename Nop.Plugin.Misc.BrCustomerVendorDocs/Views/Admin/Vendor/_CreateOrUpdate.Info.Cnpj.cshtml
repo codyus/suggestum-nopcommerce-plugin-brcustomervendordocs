@@ -1,0 +1,32 @@
+@using Nop.Web.Areas.Admin.Models.Vendors
+@model VendorModel
+@inject Nop.Plugin.Misc.BrCustomerVendorDocs.Services.BrVendorDocumentService VendorDocumentService
+@inject Nop.Plugin.Misc.BrCustomerVendorDocs.BrCustomerVendorDocsSettings Settings
+@inject Nop.Services.Localization.ILocalizationService LocalizationService
+
+@{
+    var cnpj = string.Empty;
+    if (Model.Id > 0)
+    {
+        var document = await VendorDocumentService.GetByVendorIdAsync(Model.Id);
+        cnpj = document?.Cnpj ?? string.Empty;
+    }
+}
+
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="label-wrapper">
+            <label class="col-form-label">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cnpj")</label>
+            @if (Settings.CnpjRequired)
+            {
+                <nop-required />
+            }
+        </div>
+    </div>
+    <div class="col-md-9">
+        <input type="text" id="BrVendorCnpj" name="BrVendorCnpj" value="@cnpj" class="form-control" maxlength="18" placeholder="@(Settings.AllowAlphaNumericCnpj ? "00.000.000/0000-00 ou ABC12345678901" : "00.000.000/0000-00")" />
+        @Html.ValidationMessage("BrVendorCnpj")
+        <span class="hint">@await LocalizationService.GetResourceAsync("Plugins.Misc.BrCustomerVendorDocs.Fields.Cnpj.Hint")</span>
+    </div>
+</div>
+
